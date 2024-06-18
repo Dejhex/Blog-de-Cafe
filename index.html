@@ -2,17 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">      <!-- Etiqueta para usos de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Etiqueta para uso de dispositivos mobiles -->
     <title>BlogDeCafé</title>
-    <link rel="stylesheet" href="css/Normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&family=PT+Sans:wght@400;700&display=swap"
+    
+    <!-- Prefetch -->
+    <link rel="Prefetch" href="nosotros.html" as="document">
+
+    <!-- Preload --> <!-- Carga la información más rapido al iniciar la página -->
+
+    <!-- <link rel="stylesheet" href="css/Normalize.css"> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth@0,75..100;1,75..100&family=PT+Sans:wght@400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/Style.css">  -->
+
+
+    <link rel="preload" href="css/Normalize.css" as="style">
+    <link rel="stylesheet" href="css/Normalize.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth@0,75..100;1,75..100&family=PT+Sans:wght@400;700&display=swap"
+        crossorigin="crossorigin" as="font">
+
+    <link rel="preload" href="css/Style.css" as="style">
     <link rel="stylesheet" href="css/Style.css">
+
+    <!-- <link rel="preload" href="img/blog1.jpg" as="image"> No se utiliza cuando hay soporte de WEBP -->
 </head>
 
 <body>
@@ -44,7 +62,11 @@
 
             <article class="entrada">
                 <div class="entrada__imagen">
-                    <img src="img/blog1.jpg" alt="Imagen blog">
+                    <picture> <!-- Ajusta el formato a utilizar segun el navegador webp es más bajo que jpg -->
+                        <source srcset="img/blog1.webp" type="image/webp" loading="lazy">
+                        <img src="img/blog1.jpg" alt="Imagen blog" loading="lazy">
+                        <!-- loading="lazy , carga la imagen solo cuando es requerida -->
+                    </picture>
                 </div>
 
                 <div class="entrada__contenido">
@@ -58,7 +80,11 @@
 
             <article class="entrada">
                 <div class="entrada__imagen">
-                    <img src="img/blog2.jpg" alt="Imagen blog">
+                    <picture>
+                        <source srcset="img/blog2.webp" type="image/webp" loading="lazy">
+                        <img src="img/blog2.jpg" alt="Imagen blog" loading="lazy">
+                        <!-- loading="lazy , carga la imagen solo cuando es requerida -->
+                    </picture>
                 </div>
 
                 <div class="entrada__contenido">
@@ -72,7 +98,11 @@
 
             <article class="entrada">
                 <div class="entrada__imagen">
-                    <img src="img/blog3.jpg" alt="Imagen blog">
+                    <picture>
+                        <source srcset="img/blog3.webp" type="image/webp" loading="lazy">
+                        <img src="img/blog3.jpg" alt="Imagen blog" loading="lazy">
+                        <!-- loading="lazy , carga la imagen solo cuando es requerida -->
+                    </picture>
                 </div>
 
                 <div class="entrada__contenido">
@@ -88,7 +118,7 @@
         <aside class="sidebar">
             <h3>Nuestros Cursos y Talleres</h3>
 
-            <ul class="cursos no-padding">     <!--Cursos 1-->
+            <ul class="cursos no-padding"> <!--Cursos 1-->
                 <li class="widget-curso">
                     <h4 class="no-margin">Técnicas de Extracción de Café</h4>
                     <p class="widget-curso__label">Precio:
@@ -130,6 +160,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/modernizr.js"></script>
 </body>
 
 </html>
